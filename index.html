@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Guess the Number</title>
+<link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/animations.css"><link rel="stylesheet" href="css/responsive.css">
+</head><body>
+<main id="app">
+<section class="screen" id="menu"><h1 class="logo">GUESS<span>THE</span>NUMBER</h1><p class="sub">Crack the secret number before you run out of guesses or time.</p>
+<button data-go="setup" class="btn primary">▶ Play</button><button data-go="stats" class="btn">📊 Statistics</button><button data-go="ach" class="btn">🏆 Achievements</button><button data-go="how" class="btn">❓ How to Play</button><button data-go="settings" class="btn">⚙️ Settings</button></section>
+
+<section class="screen" id="setup" hidden><h2>Game Mode</h2><div id="modes" class="grid"></div><h2>Difficulty</h2><div id="levels" class="grid"></div>
+<label class="chk"><input type="checkbox" id="quick"> Quick Play (unlock every difficulty)</label>
+<div class="row"><button data-go="menu" class="btn">Back</button><button id="start" class="btn primary">Start ▶</button></div></section>
+
+<section class="screen" id="game" hidden>
+<div class="bar"><div><b id="gMode"></b> · <span id="gLevel"></span><br><small id="gRange"></small></div><div class="right">Score <b id="gScore">0</b><br>🔥 Streak <b id="gStreak">0</b></div></div>
+<div class="ring"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="trk" cx="50" cy="50" r="45"/><circle id="arc" class="arc" cx="50" cy="50" r="45"/></svg><span id="time" role="timer" aria-label="Seconds remaining">0</span></div>
+<div id="pips" class="pips" role="img" aria-label="Attempts remaining"></div>
+<div class="inputrow"><label for="guess" class="sr">Your guess</label><input id="guess" type="text" inputmode="numeric" autocomplete="off" placeholder="?"><button id="go" class="btn primary">Guess</button></div>
+<div id="fb" class="fb" role="status" aria-live="polite">Make your first guess!</div>
+<ul id="hist" class="hist" aria-label="Guess history"></ul>
+<small id="hcount" class="mut"></small><div class="hints" id="hints"></div>
+<div class="row"><button id="pause" class="btn">⏸ Pause</button><button id="restart" class="btn">↻ Restart</button><button id="quit" class="btn">☰ Menu</button></div>
+<div id="pauseOv" class="ov" hidden><span>⏸ Paused</span><button class="btn primary" id="resume">Resume</button></div>
+</section>
+
+<section class="screen" id="result" hidden><h2 id="rTitle"></h2><ul class="list" id="rList"></ul>
+<div class="row"><button id="next" class="btn primary">Next Level ▶</button><button id="again" class="btn">Play Again</button><button data-go="menu" class="btn">Main Menu</button></div></section>
+
+<section class="screen" id="stats" hidden><h2>Statistics</h2><ul class="list" id="statList"></ul><button data-go="menu" class="btn">Back</button></section>
+<section class="screen" id="ach" hidden><h2>Achievements</h2><ul class="list" id="achList"></ul><button data-go="menu" class="btn">Back</button></section>
+<section class="screen" id="how" hidden><h2>How to Play</h2><div class="card"><p>A secret whole number is chosen at random. Type a guess and press <b>Enter</b>. You'll be told if it's too low ⬆️ or too high ⬇️.</p><p>The timer starts on your first guess. Invalid, out-of-range or repeated guesses never cost an attempt.</p><p><b>Classic:</b> one round, limited guesses and time.<br><b>Time Attack:</b> one shared clock; every correct guess adds bonus seconds.<br><b>Endless:</b> rounds get harder until you fail one.</p><p>Each round has 1 free hint; earn more from daily rewards and achievements. Hints cost points but never reveal the number.</p></div><button data-go="menu" class="btn">Back</button></section>
+<section class="screen" id="settings" hidden><h2>Settings</h2><label class="chk"><input type="checkbox" id="mute"> Mute all sounds</label><button id="reset" class="btn">🗑 Reset all progress</button><button data-go="menu" class="btn">Back</button></section>
+</main>
+<div id="modal" class="ov" hidden role="alertdialog" aria-modal="true" aria-labelledby="mText"><div class="card"><p id="mText"></p><div class="row"><button id="mNo" class="btn">Cancel</button><button id="mYes" class="btn primary">OK</button></div></div></div>
+<div id="toast" role="status" aria-live="polite"></div><div id="confetti" aria-hidden="true"></div>
+<script type="module" src="js/app.js"></script>
+</body></html>
